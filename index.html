@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 350px;
+            margin: auto;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>BMI Calculator</h1>
+
+    <input type="number" id="weight" placeholder="Weight in kg">
+
+    <input type="number" id="height" placeholder="Height in cm">
+
+    <button onclick="calculateBMI()">Calculate BMI</button>
+
+    <div id="result"></div>
+
+</div>
+
+
+<script>
+
+function calculateBMI() {
+
+    let W = parseFloat(document.getElementById("weight").value);
+    let H = parseFloat(document.getElementById("height").value);
+
+    H = H / 100;
+
+    let BMI = W / (H ** 2);
+
+    let category;
+
+    if (BMI < 18.5) {
+        category = "Underweight";
+    }
+    else if (BMI >= 18.5 && BMI < 25) {
+        category = "Healthy";
+    }
+    else if (BMI >= 25 && BMI < 30) {
+        category = "Overweight";
+    }
+    else {
+        category = "Obesity";
+    }
+
+    document.getElementById("result").innerHTML =
+        "Your BMI is: " + BMI.toFixed(2) + "<br>" +
+        "Category: " + category;
+}
+
+</script>
+
+</body>
+</html>
